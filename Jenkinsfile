@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Stop Old Container') {
+        stage('Remove Old Container') {
             steps {
                 bat '''
                 docker stop %CONTAINER_NAME% || exit 0
@@ -40,10 +40,7 @@ pipeline {
 
     post {
         success {
-            echo "Application deployed successfully 🚀"
-        }
-        failure {
-            echo "Build failed ❌"
+            echo "CI/CD completed successfully 🚀"
         }
     }
 }
